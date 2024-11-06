@@ -21,12 +21,7 @@ class Bird:
     ANIMATION_TIME = 5
 
     def __init__(self, x, y):
-        """
-        Initialize the object
-        :param x: starting x pos (int)
-        :param y: starting y pos (int)
-        :return: None
-        """
+
         self.x = x
         self.y = y
         self.tilt = 0  # degrees to tilt
@@ -37,10 +32,7 @@ class Bird:
         self.img = self.IMGS[0]
 
     def jump(self):
-        """
-        make the bird jump
-        :return: None
-        """
+
         self.vel = -10.5
         self.tick_count = 0
         self.height = self.y
