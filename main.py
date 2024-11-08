@@ -4,6 +4,11 @@ import os
 import time
 import neat
 
+WIN_WIDTH = 600
+WIN_HEIGHT = 800
+
+WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+pygame.display.set_caption("Flappy Bird")
 
 # Loading all images and scaling them
 pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs","pipe.png")).convert_alpha())
@@ -89,3 +94,24 @@ class Bird:
     def get_mask(self):
         return pygame.mask.from_surface(self.img)
 
+
+def draw_window(win,bird): 
+    win.blit(bg_img, (0,0))
+    bird.draw(win)
+    pygame.display.update()
+
+def main():
+
+    bird = Bird(200, 200)
+    win = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+
+    run = True
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+        draw_window(win,bird)
+    pygame.quit()
+    quit()
+
+main()
