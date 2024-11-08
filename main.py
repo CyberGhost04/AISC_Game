@@ -37,4 +37,18 @@ class Bird:
         self.tick_count = 0
         self.height = self.y
 
+    def move(self):
+        """
+        make the bird move
+        :return: None
+        """
+        self.tick_count += 1
+
+        # for downward acceleration
+        displacement = self.vel*(self.tick_count) + 0.5*(3)*(self.tick_count)**2  # calculate displacement
+
+        # terminal velocity
+        if displacement >= 16:
+            displacement = (displacement/abs(displacement)) * 16
+
     
