@@ -97,19 +97,12 @@ class Bird:
 
 
 class Pipe():
-    """
-    represents a pipe object
-    """
+
     GAP = 200
     VEL = 5
 
     def __init__(self, x):
-        """
-        initialize pipe object
-        :param x: int
-        :param y: int
-        :return" None
-        """
+
         self.x = x
         self.height = 0
 
@@ -125,27 +118,17 @@ class Pipe():
         self.set_height()
 
     def set_height(self):
-        """
-        set the height of the pipe, from the top of the screen
-        :return: None
-        """
+
         self.height = random.randrange(50, 450)
         self.top = self.height - self.PIPE_TOP.get_height()
         self.bottom = self.height + self.GAP
 
     def move(self):
-        """
-        move pipe based on vel
-        :return: None
-        """
+
         self.x -= self.VEL
 
     def draw(self, win):
-        """
-        draw both the top and bottom of the pipe
-        :param win: pygame window/surface
-        :return: None
-        """
+
         # draw top
         win.blit(self.PIPE_TOP, (self.x, self.top))
         # draw bottom
@@ -153,11 +136,7 @@ class Pipe():
 
 
     def collide(self, bird, win):
-        """
-        returns if a point is colliding with the pipe
-        :param bird: Bird object
-        :return: Bool
-        """
+
         bird_mask = bird.get_mask()
         top_mask = pygame.mask.from_surface(self.PIPE_TOP)
         bottom_mask = pygame.mask.from_surface(self.PIPE_BOTTOM)
@@ -173,28 +152,19 @@ class Pipe():
         return False
 
 class Base:
-    """
-    Represnts the moving floor of the game
-    """
+
     VEL = 5
     WIDTH = base_img.get_width()
     IMG = base_img
 
     def __init__(self, y):
-        """
-        Initialize the object
-        :param y: int
-        :return: None
-        """
+
         self.y = y
         self.x1 = 0
         self.x2 = self.WIDTH
 
     def move(self):
-        """
-        move floor so it looks like its scrolling
-        :return: None
-        """
+
         self.x1 -= self.VEL
         self.x2 -= self.VEL
         if self.x1 + self.WIDTH < 0:
@@ -204,11 +174,7 @@ class Base:
             self.x2 = self.x1 + self.WIDTH
 
     def draw(self, win):
-        """
-        Draw the floor. This is two images that move together.
-        :param win: the pygame surface/window
-        :return: None
-        """
+
         win.blit(self.IMG, (self.x1, self.y))
         win.blit(self.IMG, (self.x2, self.y))
 
